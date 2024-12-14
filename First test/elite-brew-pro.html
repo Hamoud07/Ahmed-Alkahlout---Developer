@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Brew Pro | BrewTech</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">BrewTech</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="cart-icon">
+            <a href="checkout.html">🛒</a>
+        </div>
+    </nav>
+
+    <div class="product-detail">
+        <div class="product-images">
+            <img src="Coffee machine.png" alt="Elite Brew Pro" class="main-image">
+        </div>
+        <div class="product-info">
+            <h1>Elite Brew Pro</h1>
+            <span class="price">$899</span>
+            <p class="description">Professional-grade automatic coffee machine with precision brewing controls and advanced temperature management. Perfect for both home baristas and small cafes.</p>
+            
+            <div class="features-list">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>15 bar pressure pump</li>
+                    <li>Dual boiler system</li>
+                    <li>Digital temperature control</li>
+                    <li>Built-in grinder</li>
+                    <li>Programmable settings</li>
+                </ul>
+            </div>
+            
+            <button class="add-to-cart" onclick="addToCart({
+                name: 'Elite Brew Pro',
+                price: 899,
+                image: 'Coffee machine.png'
+            })">Add to Cart</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+</body>
+</html> 

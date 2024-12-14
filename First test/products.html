@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | BrewTech</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">BrewTech</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <div class="profile-dropdown">
+                <a class="profile-link" id="profileLink"></a>
+                <div class="dropdown-content">
+                    <a href="#" id="myOrders">My Orders</a>
+                    <a href="#" id="logoutBtn" class="logout-link">Logout</a>
+                </div>
+            </div>
+            <a href="checkout.html" class="cart-icon">🛒</a>
+        </div>
+    </nav>
+
+    <section class="products-page">
+        <div class="products-header">
+            <h1>Discover Our Collections</h1>
+            <div class="filters">
+                <button class="filter-button active">All</button>
+                <button class="filter-button">Machines</button>
+                <button class="filter-button">Capsules</button>
+                <button class="filter-button">Coffee</button>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <!-- Elite Brew Pro -->
+            <div class="product-card">
+                <a href="elite-brew-pro.html">
+                    <img src="Coffee machine.png" alt="Elite Brew Pro">
+                </a>
+                <h3>Elite Brew Pro</h3>
+                <p>Professional-grade automatic coffee machine</p>
+                <span class="price">$899</span>
+                <a href="elite-brew-pro.html" class="product-button">View Details</a>
+            </div>
+
+            <!-- Coffee Machines -->
+            <div class="product-card">
+                <a href="barista-master.html">
+                    <img src="Coffee machine2.png" alt="Deluxe Coffee Machine">
+                </a>
+                <h3>Barista Master</h3>
+                <p>Advanced brewing with precision control</p>
+                <span class="price">$699</span>
+                <a href="barista-master.html" class="product-button">View Details</a>
+            </div>
+            <div class="product-card">
+                <a href="modern-classic.html">
+                    <img src="Coffee machine3.png" alt="Modern Coffee Machine">
+                </a>
+                <h3>Modern Classic</h3>
+                <p>Sleek design meets perfect functionality</p>
+                <div class="price-container">
+                    <span class="original-price">$699</span>
+                    <span class="price">$549</span>
+                </div>
+                <a href="modern-classic.html" class="product-button">View Details</a>
+            </div>
+            <div class="product-card">
+                <a href="smart-brew.html">
+                    <img src="Coffee machine5.png" alt="Smart Coffee Machine">
+                </a>
+                <h3>Smart Brew</h3>
+                <p>WiFi-enabled smart brewing system</p>
+                <span class="price">$799</span>
+                <a href="smart-brew.html" class="product-button">View Details</a>
+            </div>
+
+            <!-- Coffee Capsules -->
+            <div class="product-card">
+                <a href="espresso-blend.html">
+                    <img src="Espresso.png" alt="Espresso Capsules">
+                </a>
+                <h3>Espresso Blend</h3>
+                <p>Rich and intense flavor profile</p>
+                <span class="price">$29.99</span>
+                <a href="espresso-blend.html" class="product-button">View Details</a>
+            </div>
+            <div class="product-card">
+                <a href="lungo-selection.html">
+                    <img src="Roasted.png" alt="Lungo Capsules">
+                </a>
+                <h3>Lungo Selection</h3>
+                <p>Smooth and balanced taste</p>
+                <span class="price">$29.99</span>
+                <a href="lungo-selection.html" class="product-button">View Details</a>
+            </div>
+            <div class="product-card">
+                <a href="limited-edition.html">
+                    <img src="Limited.png" alt="Limited Edition Capsules">
+                </a>
+                <h3>Limited Edition</h3>
+                <p>Seasonal special blends</p>
+                <span class="price">$34.99</span>
+                <a href="limited-edition.html" class="product-button">View Details</a>
+            </div>
+
+            <!-- Coffee Beans -->
+            <div class="product-card">
+                <a href="premium-arabica.html">
+                    <img src="ArabC.png.png" alt="Arabica Beans">
+                </a>
+                <h3>Premium Arabica</h3>
+                <p>100% Arabica beans, medium roast</p>
+                <span class="price">$24.99</span>
+                <a href="premium-arabica.html" class="product-button">View Details</a>
+            </div>
+            <div class="product-card">
+                <a href="dark-roast.html">
+                    <img src="BoldC.png" alt="Dark Roast">
+                </a>
+                <h3>Dark Roast Blend</h3>
+                <p>Bold and full-bodied flavor</p>
+                <span class="price">$22.99</span>
+                <a href="dark-roast.html" class="product-button">View Details</a>
+            </div>
+            <div class="product-card">
+                <a href="single-origin.html">
+                    <img src="RoastedC.png" alt="Single Origin">
+                </a>
+                <h3>Single Origin</h3>
+                <p>Ethiopian Yirgacheffe</p>
+                <span class="price">$27.99</span>
+                <a href="single-origin.html" class="product-button">View Details</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Get all filter buttons and products
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const products = document.querySelectorAll('.product-card');
+
+        // Add click event to each filter button
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filterValue = button.textContent.toLowerCase();
+
+                products.forEach(product => {
+                    // Show all products if "All" is selected
+                    if (filterValue === 'all') {
+                        product.style.display = 'block';
+                        return;
+                    }
+
+                    // Get product type based on title and price
+                    let productType = '';
+                    const price = product.querySelector('.price').textContent;
+                    const priceNum = parseFloat(price.replace('$', ''));
+                    const title = product.querySelector('h3').textContent.toLowerCase();
+
+                    if (priceNum > 400) {
+                        productType = 'machines';
+                    } else if (title.includes('espresso') || title.includes('lungo') || title.includes('limited edition')) {
+                        productType = 'capsules';
+                    } else if (title.includes('arabica') || title.includes('dark roast') || title.includes('single origin') || 
+                             title.includes('ethiopian')) {
+                        productType = 'coffee';
+                    }
+
+                    // Show/hide products based on filter
+                    if (productType === filterValue) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Add smooth animation for filtering
+        products.forEach(product => {
+            product.style.transition = 'all 0.3s ease';
+        });
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPMed36OlUdcwkzUHb0Lr35GOyeY-nOoU",
+            authDomain: "brewtech-9bd37.firebaseapp.com",
+            projectId: "brewtech-9bd37",
+            storageBucket: "brewtech-9bd37.firebasestorage.app",
+            messagingSenderId: "488918197341",
+            appId: "1:488918197341:web:791f92ef15f49ae24259b4",
+            measurementId: "G-M2ZXJQLYF7"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            const profileDropdown = document.querySelector('.profile-dropdown');
+            if (user) {
+                profileDropdown.innerHTML = `
+                    <a class="profile-link" id="profileLink">👤</a>
+                    <div class="dropdown-content">
+                        <a href="#" id="myOrders">My Orders</a>
+                        <a href="#" id="logoutBtn" class="logout-link">Logout</a>
+                    </div>
+                `;
+
+                document.getElementById('logoutBtn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    signOut(auth).then(() => {
+                        const notification = document.createElement('div');
+                        notification.className = 'notification success';
+                        notification.innerHTML = `
+                            ✅ <span>Successfully logged out</span>
+                        `;
+                        document.body.appendChild(notification);
+                        setTimeout(() => notification.classList.add('show'), 100);
+                        setTimeout(() => {
+                            notification.classList.remove('show');
+                            setTimeout(() => notification.remove(), 300);
+                        }, 3000);
+                    });
+                });
+            } else {
+                profileDropdown.innerHTML = `<a href="login.html" class="auth-link">Login</a>`;
+            }
+        });
+    </script>
+</body>
+</html> 

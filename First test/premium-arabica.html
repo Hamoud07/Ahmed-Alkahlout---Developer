@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Arabica | BrewTech</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">BrewTech</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="cart-icon">
+            <a href="checkout.html">🛒</a>
+        </div>
+    </nav>
+
+    <div class="product-detail">
+        <div class="product-images">
+            <img src="ArabC.png.png" alt="Premium Arabica" class="main-image">
+        </div>
+        <div class="product-info">
+            <h1>Premium Arabica</h1>
+            <span class="price">$24.99</span>
+            <p class="description">100% Arabica beans, medium roasted to perfection. Experience the smooth, well-balanced flavor with subtle notes of chocolate and caramel.</p>
+            
+            <div class="features-list">
+                <h3>Product Details:</h3>
+                <ul>
+                    <li>Origin: South America</li>
+                    <li>Roast: Medium</li>
+                    <li>250g package</li>
+                    <li>Whole beans</li>
+                    <li>Roasted to order</li>
+                </ul>
+            </div>
+            
+            <button class="add-to-cart" onclick="addToCart({
+                name: 'Premium Arabica',
+                price: 24.99,
+                image: 'ArabC.png.png'
+            })">Add to Cart</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+</body>
+</html> 

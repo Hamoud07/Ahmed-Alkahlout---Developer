@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Time</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #667eea;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102,126,234,0.2);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        #resultsList {
+            margin-top: 20px;
+        }
+
+        .result-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .result-content {
+            flex-grow: 1;
+        }
+
+        .result-actions {
+            margin-left: 15px;
+        }
+
+        .delete-btn {
+            background: #fc8181;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .delete-btn:hover {
+            background: #f56565;
+        }
+
+        .data-point {
+            display: inline-block;
+            background: #edf2f7;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin: 2px;
+            font-size: 0.9em;
+            color: #4a5568;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toast {
+            background: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            animation: slideInRight 0.3s ease forwards;
+            max-width: 300px;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast.success {
+            border-left: 4px solid #48bb78;
+        }
+
+        .toast.error {
+            border-left: 4px solid #f56565;
+        }
+
+        .toast.warning {
+            border-left: 4px solid #ed8936;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .modal-buttons button {
+            min-width: 100px;
+        }
+
+        .btn-cancel {
+            background: #cbd5e0;
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reaction Time Study</h1>
+        
+        <div class="section">
+            <h2>Enter Test Results</h2>
+            <form id="dataForm">
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <select id="age" required>
+                        <option value="none">None</option>
+                        <option value="younger">Younger</option>
+                        <option value="older">Older</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" required>
+                        <option value="none">None</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="videoGames">Plays Video Games:</label>
+                    <select id="videoGames" required>
+                        <option value="none">None</option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="physicalActivity">Physical Activity:</label>
+                    <select id="physicalActivity" required>
+                        <option value="none">None</option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="testType">Test Type:</label>
+                    <select id="testType" required>
+                        <option value="visual">Visual</option>
+                        <option value="tactile">Tactile</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reactionTime">Reaction Time (ms):</label>
+                    <input type="number" id="reactionTime" required>
+                </div>
+
+                <button type="submit">Save Result</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>Saved Results</h2>
+            <div class="button-group">
+                <button onclick="exportResults()">Export Data</button>
+                <input type="file" id="importFile" style="display: none;" accept=".json" onchange="importResults(this)">
+                <button onclick="document.getElementById('importFile').click()">Import Data</button>
+                <button onclick="clearAllResults()" style="background: #fc8181;">Clear All</button>
+            </div>
+            <div id="resultsList"></div>
+        </div>
+
+        <div class="section">
+            <h2>Data Analysis</h2>
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <canvas id="reactionTimeByAge"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="reactionTimeByType"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="reactionTimeByGender"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="reactionTimeByGames"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="reactionTimeByActivity"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container"></div>
+
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <h3 id="modalMessage"></h3>
+            <div class="modal-buttons">
+                <button onclick="handleModalConfirm()" style="background: #f56565;">Delete</button>
+                <button onclick="closeModal()" class="btn-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let results = JSON.parse(localStorage.getItem('reactionTimeResults') || '[]');
+
+        function exportResults() {
+            const dataStr = JSON.stringify(results, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'reaction_time_results.json';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        function importResults(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const importedData = JSON.parse(e.target.result);
+                        if (Array.isArray(importedData)) {
+                            const existingResults = JSON.parse(localStorage.getItem('reactionTimeResults') || '[]');
+                            importedData.forEach((newResult, index) => {
+                                existingResults.push({
+                                    ...newResult,
+                                    id: Date.now() + index
+                                });
+                            });
+                            results = existingResults;
+                            localStorage.setItem('reactionTimeResults', JSON.stringify(results));
+                            displayResults();
+                        } else {
+                            alert('Invalid data format');
+                        }
+                    } catch (error) {
+                        alert('Error importing data: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            }
+            input.value = '';
+        }
+
+        function deleteResult(id) {
+            showConfirmModal('Are you sure you want to delete this result?', () => {
+                results = results.filter(result => result.id !== id);
+                localStorage.setItem('reactionTimeResults', JSON.stringify(results));
+                displayResults();
+                showToast('Result deleted successfully');
+            });
+        }
+
+        function clearAllResults() {
+            showConfirmModal('Are you sure you want to delete ALL results? This cannot be undone!', () => {
+                results = [];
+                localStorage.setItem('reactionTimeResults', JSON.stringify(results));
+                displayResults();
+                showToast('All results cleared', 'warning');
+            });
+        }
+
+        document.getElementById('dataForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Destroy existing charts before saving
+            const chartIds = ['reactionTimeByAge', 'reactionTimeByType', 'reactionTimeByGender', 'reactionTimeByGames', 'reactionTimeByActivity'];
+            chartIds.forEach(id => {
+                const chartInstance = Chart.getChart(id);
+                if (chartInstance) {
+                    chartInstance.destroy();
+                }
+            });
+            
+            const newResult = {
+                id: Date.now(),
+                age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
+                videoGames: document.getElementById('videoGames').value,
+                physicalActivity: document.getElementById('physicalActivity').value,
+                testType: document.getElementById('testType').value,
+                reactionTime: parseInt(document.getElementById('reactionTime').value),
+                createdAt: new Date().toISOString()
+            };
+            
+            results.push(newResult);
+            localStorage.setItem('reactionTimeResults', JSON.stringify(results));
+            
+            this.reset();
+            displayResults();
+            showToast('Result saved successfully!');
+        });
+
+        function displayResults() {
+            const resultsList = document.getElementById('resultsList');
+            resultsList.innerHTML = results.map(result => `
+                <div class="result-item">
+                    <div class="result-content">
+                        <div>
+                            <span class="data-point">Age: ${result.age}</span>
+                            <span class="data-point">Gender: ${result.gender}</span>
+                            <span class="data-point">Video Games: ${result.videoGames === '1' ? 'Yes' : result.videoGames === '0' ? 'No' : 'None'}</span>
+                            <span class="data-point">Physical Activity: ${result.physicalActivity === '1' ? 'Yes' : result.physicalActivity === '0' ? 'No' : 'None'}</span>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <span class="data-point">Test Type: ${result.testType}</span>
+                            <span class="data-point">Reaction Time: ${result.reactionTime}ms</span>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button onclick="deleteResult(${result.id})" class="delete-btn">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+            updateCharts();
+        }
+
+        function updateCharts() {
+            // Destroy existing charts
+            const chartIds = ['reactionTimeByAge', 'reactionTimeByType', 'reactionTimeByGender', 'reactionTimeByGames', 'reactionTimeByActivity'];
+            chartIds.forEach(id => {
+                const chartInstance = Chart.getChart(id);
+                if (chartInstance) {
+                    chartInstance.destroy();
+                }
+            });
+
+            // By age
+            const ageData = {
+                younger: results.filter(r => r.age === 'younger' && r.age !== 'none').map(r => r.reactionTime),
+                older: results.filter(r => r.age === 'older' && r.age !== 'none').map(r => r.reactionTime)
+            };
+
+            new Chart(document.getElementById('reactionTimeByAge'), {
+                type: 'bar',
+                data: {
+                    labels: ['Younger', 'Older'],
+                    datasets: [{
+                        label: 'Average Reaction Time (ms)',
+                        data: [
+                            ageData.younger.length ? ageData.younger.reduce((a, b) => a + b) / ageData.younger.length : 0,
+                            ageData.older.length ? ageData.older.reduce((a, b) => a + b) / ageData.older.length : 0
+                        ],
+                        backgroundColor: ['rgba(102,126,234,0.5)', 'rgba(118,75,162,0.5)']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Average Reaction Time by Age Group'
+                        }
+                    }
+                }
+            });
+
+            // Average reaction time by test type
+            const typeData = {
+                visual: results.filter(r => r.testType === 'visual').map(r => r.reactionTime),
+                tactile: results.filter(r => r.testType === 'tactile').map(r => r.reactionTime)
+            };
+
+            new Chart(document.getElementById('reactionTimeByType'), {
+                type: 'bar',
+                data: {
+                    labels: ['Visual', 'Tactile'],
+                    datasets: [{
+                        label: 'Average Reaction Time (ms)',
+                        data: [
+                            typeData.visual.length ? typeData.visual.reduce((a, b) => a + b) / typeData.visual.length : 0,
+                            typeData.tactile.length ? typeData.tactile.reduce((a, b) => a + b) / typeData.tactile.length : 0
+                        ],
+                        backgroundColor: ['rgba(102,126,234,0.5)', 'rgba(118,75,162,0.5)']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Average Reaction Time by Test Type'
+                        }
+                    }
+                }
+            });
+
+            // By gender
+            const genderData = {
+                male: results.filter(r => r.gender === 'male' && r.gender !== 'none').map(r => r.reactionTime),
+                female: results.filter(r => r.gender === 'female' && r.gender !== 'none').map(r => r.reactionTime)
+            };
+
+            new Chart(document.getElementById('reactionTimeByGender'), {
+                type: 'bar',
+                data: {
+                    labels: ['Male', 'Female'],
+                    datasets: [{
+                        label: 'Average Reaction Time (ms)',
+                        data: [
+                            genderData.male.length ? genderData.male.reduce((a, b) => a + b) / genderData.male.length : 0,
+                            genderData.female.length ? genderData.female.reduce((a, b) => a + b) / genderData.female.length : 0
+                        ],
+                        backgroundColor: ['rgba(102,126,234,0.5)', 'rgba(118,75,162,0.5)']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Average Reaction Time by Gender'
+                        }
+                    }
+                }
+            });
+
+            // By video games
+            const gamesData = {
+                yes: results.filter(r => r.videoGames === '1').map(r => r.reactionTime),
+                no: results.filter(r => r.videoGames === '0').map(r => r.reactionTime)
+            };
+
+            new Chart(document.getElementById('reactionTimeByGames'), {
+                type: 'bar',
+                data: {
+                    labels: ['Plays Games', 'No Games'],
+                    datasets: [{
+                        label: 'Average Reaction Time (ms)',
+                        data: [
+                            gamesData.yes.length ? gamesData.yes.reduce((a, b) => a + b) / gamesData.yes.length : 0,
+                            gamesData.no.length ? gamesData.no.reduce((a, b) => a + b) / gamesData.no.length : 0
+                        ],
+                        backgroundColor: ['rgba(102,126,234,0.5)', 'rgba(118,75,162,0.5)']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Average Reaction Time by Gaming Experience'
+                        }
+                    }
+                }
+            });
+
+            // By physical activity
+            const activityData = {
+                yes: results.filter(r => r.physicalActivity === '1').map(r => r.reactionTime),
+                no: results.filter(r => r.physicalActivity === '0').map(r => r.reactionTime)
+            };
+
+            new Chart(document.getElementById('reactionTimeByActivity'), {
+                type: 'bar',
+                data: {
+                    labels: ['Physically Active', 'Not Active'],
+                    datasets: [{
+                        label: 'Average Reaction Time (ms)',
+                        data: [
+                            activityData.yes.length ? activityData.yes.reduce((a, b) => a + b) / activityData.yes.length : 0,
+                            activityData.no.length ? activityData.no.reduce((a, b) => a + b) / activityData.no.length : 0
+                        ],
+                        backgroundColor: ['rgba(102,126,234,0.5)', 'rgba(118,75,162,0.5)']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Average Reaction Time by Physical Activity'
+                        }
+                    }
+                }
+            });
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            document.querySelector('.toast-container').appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOutRight 0.3s ease forwards';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        let modalCallback = null;
+
+        function showConfirmModal(message, callback) {
+            document.getElementById('modalMessage').textContent = message;
+            document.getElementById('confirmModal').style.display = 'flex';
+            modalCallback = callback;
+        }
+
+        function closeModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+        }
+
+        function handleModalConfirm() {
+            closeModal();
+            if (modalCallback) {
+                document.querySelector('.toast-container').innerHTML = '';
+                modalCallback();
+            }
+        }
+
+        displayResults();
+    </script>
+</body>
+</html> 

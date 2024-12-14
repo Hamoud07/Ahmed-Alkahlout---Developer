@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Classic | BrewTech</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">BrewTech</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="cart-icon">
+            <a href="checkout.html">🛒</a>
+        </div>
+    </nav>
+
+    <div class="product-detail">
+        <div class="product-images">
+            <img src="Coffee machine3.png" alt="Modern Classic" class="main-image">
+        </div>
+        <div class="product-info">
+            <h1>Modern Classic</h1>
+            <div class="price-container">
+                <span class="original-price">$699</span>
+                <span class="price">$549</span>
+            </div>
+            <p class="description">Sleek design meets perfect functionality in this modern interpretation of classic coffee making. Perfect for those who appreciate both style and substance.</p>
+            
+            <div class="features-list">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Sleek stainless steel design</li>
+                    <li>18 bar pressure system</li>
+                    <li>Adjustable temperature control</li>
+                    <li>Quick heat-up time</li>
+                    <li>Easy-clean removable parts</li>
+                </ul>
+            </div>
+            
+            <button class="add-to-cart" onclick="addToCart({
+                name: 'Modern Classic',
+                price: 549,
+                image: 'Coffee machine3.png'
+            })">Add to Cart</button>
+        </div>
+    </div>
+    <script src="cart.js"></script>
+</body>
+</html> 

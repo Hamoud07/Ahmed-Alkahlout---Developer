@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barista Master | BrewTech</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">BrewTech</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="cart-icon">
+            <a href="checkout.html">🛒</a>
+        </div>
+    </nav>
+
+    <div class="product-detail">
+        <div class="product-images">
+            <img src="Coffee machine2.png" alt="Barista Master" class="main-image">
+        </div>
+        <div class="product-info">
+            <h1>Barista Master</h1>
+            <span class="price">$699</span>
+            <p class="description">Advanced brewing system with precision control for the perfect cup every time. Ideal for home baristas who demand professional results.</p>
+            
+            <div class="features-list">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>19 bar pressure pump</li>
+                    <li>PID temperature control</li>
+                    <li>58mm commercial portafilter</li>
+                    <li>Powerful steam wand</li>
+                    <li>Shot timer display</li>
+                </ul>
+            </div>
+            
+            <button class="add-to-cart" onclick="addToCart({
+                name: 'Barista Master',
+                price: 699,
+                image: 'Coffee machine2.png'
+            })">Add to Cart</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+</body>
+</html> 

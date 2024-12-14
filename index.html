@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Alkahlout - Developer</title>
+    <link rel="icon" type="image/png" href="RealWeb.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="particles"></div>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">Ahmed Alkahlout</div>
+            <button class="menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#donate" class="donate-btn">Donate</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="container">
+            <h1>Hi, I'm <span class="highlight">Ahmed Alkahlout</span></h1>
+            <p class="tagline">Full Stack Developer | Web Solutions Architect | Creative Problem Solver</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="primary-btn">View My Work</a>
+                <a href="#contact" class="secondary-btn">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p class="about-text">I’m a passionate full-stack developer dedicated to building engaging, user-friendly web experiences. Whether it’s crafting sleek, responsive front-end interfaces or developing powerful, reliable back-end systems, I thrive on turning ideas into reality with clean, efficient code and creative design solutions.</p>
+            <div class="skills">
+                <h3>Technical Skills</h3>
+                <div class="skill-categories">
+                    <div class="skill-category">
+                        <h4>Frontend</h4>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Vue.js</span>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Backend</h4>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Tools & Others</h4>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">REST APIs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>BrewTech</h3>
+                    <p>A web development project showcasing frontend skills and interactive design.</p>
+                    <a href="First test/index.html" class="project-link" target="_blank">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h3>Reaction Time Study</h3>
+                    <p>An experimental web project demonstrating advanced web development techniques.</p>
+                    <a href="Laboration/index.html" class="project-link" target="_blank">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p class="contact-intro">Have a project in mind? Let's discuss how I can help you!</p>
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="990b6657-e9c5-43ab-a265-6928903c86ea">
+                
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="How can I help you?" required></textarea>
+                </div>
+
+                <!-- Honeypot Spam Protection -->
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                
+                <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                    <svg class="send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <section id="donate">
+        <div class="container">
+            <h2>Support My Work</h2>
+            <p>If you enjoy my work and want to support my continued development of open-source projects, consider buying me a coffee or making a small donation.</p>
+            <div class="donation-options">
+                <a href="https://ko-fi.com/yourname" class="donate-button" target="_blank">
+                    <i class="fas fa-coffee"></i>
+                    <span>Buy me a coffee</span>
+                </a>
+                <a href="https://paypal.me/yourname" class="donate-button" target="_blank">
+                    <i class="fab fa-paypal"></i>
+                    <span>Support via PayPal</span>
+                </a>
+                <button id="stripe-donate" class="donate-button">
+                    <i class="fab fa-stripe"></i>
+                    <span>Donate $5</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Ahmed Alkahlout. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

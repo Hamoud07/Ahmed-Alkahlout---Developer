@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | BrewTech</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">BrewTech</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <div class="profile-dropdown">
+                <a class="profile-link" id="profileLink">👤</a>
+                <div class="dropdown-content">
+                    <a href="#" id="myOrders">My Orders</a>
+                    <a href="#" id="logoutBtn" class="logout-link">Logout</a>
+                </div>
+            </div>
+            <a href="checkout.html" class="cart-icon">🛒</a>
+        </div>
+    </nav>
+
+    <section class="contact-hero">
+        <h1>Get in Touch</h1>
+        <p>We're here to help and answer any questions you might have</p>
+    </section>
+
+    <section class="contact-info">
+        <div class="contact-cards">
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Call Us</h3>
+                <p>Monday to Friday: 9am - 6pm</p>
+                <a href="tel:+1234567890">+46 (07) 617-705-04</a>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Us</h3>
+                <p>We'll respond within 24 hours</p>
+                <a href="mailto:ahmedsami070120@outlook.com">ahmedsami070120@outlook.com</a>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Visit Us</h3>
+                <p>Balladgatan 10A, Örebro</p>
+                <a href="https://www.google.com/maps?q=Balladgatan 10A" target="_blank">View on Map</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-form-section">
+        <div class="contact-container">
+            <div class="form-info">
+                <h2>Send Us a Message</h2>
+                <p>Have a question about our products? Need help with your machine? Fill out the form below and we'll get back to you as soon as possible.</p>
+                
+                <div class="quick-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#faq" class="scroll-link">Frequently Asked Questions</a></li>
+                        <li><a href="#warranty">Warranty Information</a></li>
+                        <li><a href="#shipping">Shipping Policy</a></li>
+                        <li><a href="#returns">Returns & Refunds</a></li>
+                    </ul>
+                </div>
+
+                <div class="social-links">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" action="https://formspree.io/f/mpwzyjyg" method="POST" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="Technical Support">Technical Support</option>
+                        <option value="Sales Inquiry">Sales Inquiry</option>
+                        <option value="Warranty Claim">Warranty Claim</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                <input type="text" name="_gotcha" style="display:none">
+                <input type="hidden" name="_next" value="https://yoursite.com/thanks.html">
+                <button type="submit" class="submit-button" id="submitButton">Send Message</button>
+                <div id="cooldownMessage" class="cooldown-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>How long is the warranty period?</h3>
+                <p>All our coffee machines come with a 2-year warranty covering manufacturing defects and mechanical issues.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What's your delivery timeframe?</h3>
+                <p>We typically deliver within 2-5 business days for in-stock items. International shipping may take longer.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Do you offer installation services?</h3>
+                <p>Yes, we provide professional installation services for our commercial machines. Contact us for details.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I clean my coffee machine?</h3>
+                <p>We provide detailed cleaning instructions with each machine. Regular maintenance is key for optimal performance.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Do you offer bulk discounts?</h3>
+                <p>Yes, we offer special pricing for bulk orders and business customers. Contact our sales team for a custom quote.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What payment methods do you accept?</h3>
+                <p>We accept all major credit cards, PayPal, and bank transfers. Financing options are available for business customers.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const submitButton = document.getElementById('submitButton');
+        const cooldownMessage = document.getElementById('cooldownMessage');
+        const COOLDOWN_TIME = 300; // 5 minutes in seconds
+
+        // Check if there's a stored timestamp
+        const lastSubmissionTime = localStorage.getItem('lastSubmissionTime');
+        const currentTime = Date.now();
+
+        if (lastSubmissionTime) {
+            const timeElapsed = Math.floor((currentTime - parseInt(lastSubmissionTime)) / 1000);
+            if (timeElapsed < COOLDOWN_TIME) {
+                startCooldown(COOLDOWN_TIME - timeElapsed);
+            }
+        }
+
+        form.addEventListener('submit', function(e) {
+            if (submitButton.disabled) {
+                e.preventDefault();
+                return;
+            }
+
+            localStorage.setItem('lastSubmissionTime', Date.now().toString());
+            startCooldown(COOLDOWN_TIME);
+        });
+
+        function startCooldown(seconds) {
+            submitButton.disabled = true;
+            updateCooldownText(Math.floor(seconds));
+
+            const interval = setInterval(() => {
+                seconds--;
+                updateCooldownText(Math.floor(seconds));
+
+                if (seconds <= 0) {
+                    clearInterval(interval);
+                    submitButton.disabled = false;
+                    cooldownMessage.textContent = '';
+                }
+            }, 1000);
+        }
+
+        function updateCooldownText(seconds) {
+            // Convert seconds to minutes and remaining seconds
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            
+            // Format the message
+            let message = 'Please wait ';
+            if (minutes > 0) {
+                message += `${minutes} minute${minutes > 1 ? 's' : ''}`;
+                if (remainingSeconds > 0) {
+                    message += ` and ${remainingSeconds} second${remainingSeconds > 1 ? 's' : ''}`;
+                }
+            } else {
+                message += `${remainingSeconds} second${remainingSeconds > 1 ? 's' : ''}`;
+            }
+            message += ' before sending another message';
+            
+            cooldownMessage.textContent = message;
+        }
+
+        // Update smooth scroll functionality
+        document.querySelector('.scroll-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const faqSection = document.querySelector('#faq');
+            
+            // Get the element's position relative to the viewport
+            const elementPosition = faqSection.getBoundingClientRect().top;
+            // Get the current scroll position and add extra offset
+            const offsetPosition = elementPosition + window.pageYOffset + 20; // Added -100 to scroll further down
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+
+            // Add highlight effect
+            faqSection.classList.add('highlight');
+            setTimeout(() => {
+                faqSection.classList.remove('highlight');
+            }, 1000);
+        });
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPMed36OlUdcwkzUHb0Lr35GOyeY-nOoU",
+            authDomain: "brewtech-9bd37.firebaseapp.com",
+            projectId: "brewtech-9bd37",
+            storageBucket: "brewtech-9bd37.firebasestorage.app",
+            messagingSenderId: "488918197341",
+            appId: "1:488918197341:web:791f92ef15f49ae24259b4",
+            measurementId: "G-M2ZXJQLYF7"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            const profileDropdown = document.querySelector('.profile-dropdown');
+            if (user) {
+                profileDropdown.innerHTML = `
+                    <a class="profile-link" id="profileLink">👤</a>
+                    <div class="dropdown-content">
+                        <a href="#" id="myOrders">My Orders</a>
+                        <a href="#" id="logoutBtn" class="logout-link">Logout</a>
+                    </div>
+                `;
+
+                document.getElementById('logoutBtn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    signOut(auth).then(() => {
+                        const notification = document.createElement('div');
+                        notification.className = 'notification success';
+                        notification.innerHTML = `
+                            ✅ <span>Successfully logged out</span>
+                        `;
+                        document.body.appendChild(notification);
+                        setTimeout(() => notification.classList.add('show'), 100);
+                        setTimeout(() => {
+                            notification.classList.remove('show');
+                            setTimeout(() => notification.remove(), 300);
+                        }, 3000);
+                    });
+                });
+            } else {
+                profileDropdown.innerHTML = `<a href="login.html" class="auth-link">Login</a>`;
+            }
+        });
+    </script>
+</body>
+</html>

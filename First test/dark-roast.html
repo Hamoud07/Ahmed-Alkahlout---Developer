@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Roast Blend | BrewTech</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">BrewTech</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="cart-icon">
+            <a href="checkout.html">🛒</a>
+        </div>
+    </nav>
+
+    <div class="product-detail">
+        <div class="product-images">
+            <img src="BoldC.png" alt="Dark Roast" class="main-image">
+        </div>
+        <div class="product-info">
+            <h1>Dark Roast Blend</h1>
+            <span class="price">$22.99</span>
+            <p class="description">Bold and full-bodied flavor with a rich, intense taste. Perfect for those who love their coffee strong and aromatic.</p>
+            
+            <div class="features-list">
+                <h3>Product Details:</h3>
+                <ul>
+                    <li>Origin: Indonesia & Africa blend</li>
+                    <li>Roast: Dark</li>
+                    <li>250g package</li>
+                    <li>Whole beans</li>
+                    <li>Low acidity</li>
+                </ul>
+            </div>
+            
+            <button class="add-to-cart" onclick="addToCart({
+                name: 'Dark Roast Blend',
+                price: 22.99,
+                image: 'BoldC.png'
+            })">Add to Cart</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+</body>
+</html> 
