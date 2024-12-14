@@ -191,7 +191,16 @@ document.addEventListener('DOMContentLoaded', () => {
     menuBtn.addEventListener('click', () => {
         menuBtn.classList.toggle('active');
         navLinksContainer.classList.toggle('active');
+        document.querySelector('.menu-overlay').classList.toggle('active');
         document.body.classList.toggle('menu-open');
+    });
+
+    // Close mobile menu when clicking outside
+    document.querySelector('.menu-overlay').addEventListener('click', () => {
+        menuBtn.classList.remove('active');
+        navLinksContainer.classList.remove('active');
+        document.querySelector('.menu-overlay').classList.remove('active');
+        document.body.classList.remove('menu-open');
     });
 
     // Close mobile menu when clicking a link
@@ -199,16 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => {
             menuBtn.classList.remove('active');
             navLinksContainer.classList.remove('active');
+            document.querySelector('.menu-overlay').classList.remove('active');
             document.body.classList.remove('menu-open');
         });
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!nav.contains(e.target) && navLinksContainer.classList.contains('active')) {
-            menuBtn.classList.remove('active');
-            navLinksContainer.classList.remove('active');
-        }
     });
 });
 

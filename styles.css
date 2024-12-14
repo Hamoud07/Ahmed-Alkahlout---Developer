@@ -222,53 +222,80 @@ nav:not(.scrolled) .donate-btn {
 @media (max-width: 768px) {
     .menu-btn {
         display: block;
+        position: relative;
+        z-index: 1002;
     }
 
     nav {
         width: 95%;
         border-radius: 50px;
-        transform: translate3d(-50%, 0, 0);
-        backface-visibility: hidden;
     }
 
     .nav-links {
         position: fixed;
-        top: 90px;
-        right: 5%;
-        width: 90%;
-        height: auto;
-        padding: 2rem;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
         background: var(--surface);
-        border-radius: 20px;
-        border: 1px solid rgba(139, 92, 246, 0.2);
+        padding: 5rem 2rem 2rem;
         flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-        transition: all 0.5s ease;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-20px);
-        transform: translate3d(0, 0, 0);
-        backface-visibility: hidden;
+        align-items: flex-start;
+        gap: 1.5rem;
+        transition: all 0.3s ease;
+        z-index: 1001;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+        display: flex !important;
     }
 
     .nav-links.active {
+        right: 0;
+    }
+
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+
+    .menu-overlay.active {
         opacity: 1;
         visibility: visible;
-        transform: translateY(0);
     }
 
-    .menu-btn.active .bar:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
+    .nav-links a {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        color: var(--text);
+        font-size: 1.1rem;
+        border-radius: 8px;
     }
 
-    .menu-btn.active .bar:nth-child(2) {
-        opacity: 0;
+    .nav-links a:hover {
+        background: rgba(139, 92, 246, 0.1);
     }
 
-    .menu-btn.active .bar:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
+    .donate-btn {
+        margin-top: 1rem;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
+}
+
+/* For smaller screens */
+@media (max-width: 480px) {
+    .nav-links {
+        width: 85%;
     }
 }
 
